@@ -1,6 +1,6 @@
 const { promisify } = require('util')
-const { verify } = require('jsonwebtoken');
-const verifyWithPromise = promisify(verify)
+const jsonwebtoken = require('jsonwebtoken');
+const verifyWithPromise = promisify(jsonwebtoken.verify);
 
 const { jwtSecret } = require('../../config');
 

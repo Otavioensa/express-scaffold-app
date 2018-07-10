@@ -1,24 +1,24 @@
 const { resourceRepository } = require('../repository');
-const { generateToken } = require('../libs/token');
-const { generate: generateId} = require('../libs/idGenerator');
+const token = require('../libs/token');
+const idGenerator  = require('../libs/idGenerator');
 
 const getToken = async () => {
-  const id = generateId()
-  const token = await generateToken(id)   
+  const id = idGenerator.generate();
+  const jwtToken = await token.generateToken(id);  
   const response = {
-    token,
-  }
+    jwtToken,
+  };
   
-  return Promise.resolve(response)
+  return Promise.resolve(response);
 }
 
 const authenticate = () => {
   const response = {
     authenticated: true,
-    message: 'You are now authenticated'
-  }
+    message: 'You are now authenticated',
+  };
 
-  return Promise.resolve(response)
+  return Promise.resolve(response);
 }
 
 module.exports = {
